@@ -15,6 +15,22 @@ Use query to discover existing declarations and inspect the source, references, 
 
 After editing, use check and the relevant tests. Read their help for machine output and test selection. Compilation, executed tests and native builds establish different facts; report the verification actually performed.
 
+## Live runtime
+
+Running source applications expose live update capability through the system runtime. This is an application capability, not an Agent constructor option and not an Agent library type. Acquire it explicitly when the application needs to inspect or publish source changes:
+
+```norm
+import std.system.currentSystem
+
+var runtime = currentSystem().runtime()
+```
+
+Use `runtime.previewUpdate()` before publication when the caller needs to review the complete before/after declaration changes. Use `runtime.beginUpdate()` for a related group of source or dependency edits, call `preview()` when review is required, and call `commit()` to publish the batch. `runtime.publishUpdate()` is the direct publication form. A rejected or failed result leaves the running revision active and carries structured diagnostics; do not treat a file write as a successful runtime update.
+
+Use `runtime.onUpdate` when the application needs transition notifications. The callback receives `RuntimeUpdateEvent` values such as `Requested`, `Published`, `Rejected`, `Failed`, `AdoptionPending`, and `Adopted`; close the returned subscription when the listener is no longer needed. Inspect `changes` for the declarations changed by a publication and use `before` and `after` from the preview or result for reviewable details.
+
+Keep runtime wiring in the application layer. The basic Agent entry point should pass its instruction, `skills`, and `tools`; an application that lets an Agent request publication can expose a normal tool which calls the application-owned `Runtime`. Do not add `toolProvider`, `beginToolScope`, or `contextProvider` just to obtain runtime access. Read the [Runtime update design](https://github.com/normlanguage/Norm/blob/main/docs/zh/design/runtime-update-tool-261018.md), [`std.system`](https://github.com/normlanguage/Norm/tree/main/norm/stdlib/std/system), and [`std.runtime`](https://github.com/normlanguage/Norm/tree/main/norm/stdlib/std/runtime) for the authoritative declarations.
+
 ## Language rules
 
 For a first Norm task, read the [Language Tour](https://normlanguage.github.io/Norm/learn/). Resolve exact syntax and semantics through the [Language Reference](https://normlanguage.github.io/Norm/spec/language-spec). Do not infer Norm behavior from Java or another familiar language.
