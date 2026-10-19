@@ -8,8 +8,8 @@
     },
     {
       "name": "norm-std",
-      "revision": "09b1642b612936ce867a4ed0fde82a48d076c7e4",
-      "sha256": "29dffe11e4f025674d5ac39f266fb1175db1ad464f48b582fcf0f4ed9abbaeba"
+      "revision": "53124bf6c680c49ad007274e2b193fc0233f29c9",
+      "sha256": "50a4eb3d8aef2bd933b656f4ee4bc9c407316810d386a7634be67c70f77b7ece"
     },
     {
       "name": "package-standards",

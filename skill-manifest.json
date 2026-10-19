@@ -11,7 +11,7 @@
     {
       "name": "norm-std",
       "repository": "https://github.com/normlanguage/Norm-Std-Skill.git",
-      "revision": "53124bf",
+      "revision": "53124bf6c680c49ad007274e2b193fc0233f29c9",
       "path": "SKILL.md",
       "required": true
     },

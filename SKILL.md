@@ -68,16 +68,16 @@ Keep API lists, language rules and command definitions in these owning sources. 
 
 ## Component: norm-std
 
-Source: `https://github.com/normlanguage/Norm-Std-Skill.git`; revision: `09b1642b612936ce867a4ed0fde82a48d076c7e4`.
+Source: `https://github.com/normlanguage/Norm-Std-Skill.git`; revision: `53124bf6c680c49ad007274e2b193fc0233f29c9`.
 
 <!-- component:norm-std -->
 # Norm Standard Library Skill
 
 This skill describes the public `std` module shipped with Norm. It is generated from the Norm standard-library sources and their `@Document` annotations.
 
-- Norm source revision: `a704d53d1b55afa59a5fa69a9f19183a8312381b`
+- Norm source revision: `291eb53b8b6afa3668522d5f6774f3f34f960cc7`
 - Standard library module: `std` version `1`
-- Source: https://github.com/normlanguage/Norm/tree/a704d53d1b55afa59a5fa69a9f19183a8312381b/norm/stdlib/std
+- Source: https://github.com/normlanguage/Norm/tree/codex/skill-distribution/norm/stdlib/std
 - API export command: `norm docs norm/stdlib/std --output build/std-api --skill SKILL.md --strict`
 
 ## Usage
