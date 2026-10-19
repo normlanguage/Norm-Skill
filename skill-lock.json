@@ -1,0 +1,25 @@
+{
+  "formatVersion": 1,
+  "components": [
+    {
+      "name": "language-cli",
+      "revision": "self",
+      "sha256": "74460b535527696e525018e3dff2ad0640dc3385d1192a848e5a5543f2e34bd8"
+    },
+    {
+      "name": "norm-std",
+      "revision": "53124bf6c680c49ad007274e2b193fc0233f29c9",
+      "sha256": "50a4eb3d8aef2bd933b656f4ee4bc9c407316810d386a7634be67c70f77b7ece"
+    },
+    {
+      "name": "package-standards",
+      "revision": "b8009530ecc3b5622c4c082d53cf5d06bd516f9b",
+      "sha256": "e60eb6b6554c8d13c59656a225a19b4a179111fa7a3c570b3a557cd5f8244f55"
+    },
+    {
+      "name": "registry",
+      "revision": "ab7dced7a37109af9bd1221d83b3f5720103a11c",
+      "sha256": "567895e45b12bc812bb0a3e2491a4b42bfaa81aeebe88e77f92ed8e83b0ed308"
+    }
+  ]
+}
