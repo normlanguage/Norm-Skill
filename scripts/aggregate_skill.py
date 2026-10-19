@@ -5,6 +5,7 @@ import hashlib
 import json
 from pathlib import Path
 import subprocess
+import re
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -36,8 +37,15 @@ def collect(manifest: dict) -> tuple[str, list[dict]]:
                 raise RuntimeError(f"{component['name']} is at {actual}, expected pinned revision {expected}")
         text = path.read_text(encoding="utf-8").strip()
         digest = hashlib.sha256(text.encode("utf-8")).hexdigest()
-        evidence.append({"name": component["name"], "revision": component.get("revision", "working-tree"), "sha256": digest})
-        sections.append(f"\n<!-- component:{component['name']} -->\n{text}\n<!-- end-component:{component['name']} -->\n")
+        revision = component.get("revision", "self")
+        evidence.append({"name": component["name"], "revision": revision, "sha256": digest})
+        text = re.sub(r"\A---\s*\n.*?\n---\s*\n?", "", text, count=1, flags=re.DOTALL).strip()
+        source = component.get("repository", "Norm-Skill local source")
+        sections.append(
+            f"\n## Component: {component['name']}\n\n"
+            f"Source: `{source}`; revision: `{revision}`.\n\n"
+            f"<!-- component:{component['name']} -->\n{text}\n<!-- end-component:{component['name']} -->\n"
+        )
     return "\n".join(sections), evidence
 
 def main() -> int:

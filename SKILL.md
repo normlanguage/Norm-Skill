@@ -7,12 +7,11 @@ description: Norm language, CLI, standard-library, package, and registry guidanc
 
 This file is generated from the pinned components in `skill-manifest.json`.
 
-<!-- component:language-cli -->
----
-name: norm-skill
-description: Write, modify, refactor, and test Norm language applications using the Norm CLI, authoritative language rules, and existing library catalogs. Use for .norm source and Norm modules.
----
+## Component: language-cli
 
+Source: `Norm-Skill local source`; revision: `self`.
+
+<!-- component:language-cli -->
 # Norm
 
 Use the installed toolchain and the project's existing declarations to guide implementation. Read only the reference sections relevant to the task; follow their links when more detail is needed.
@@ -66,6 +65,10 @@ Check [Status](https://normlanguage.github.io/Norm/status) and [version contract
 Keep API lists, language rules and command definitions in these owning sources. Extend application code using verified declarations rather than inventing APIs from names.
 <!-- end-component:language-cli -->
 
+
+## Component: norm-std
+
+Source: `https://github.com/normlanguage/Norm-Std-Skill.git`; revision: `09b1642b612936ce867a4ed0fde82a48d076c7e4`.
 
 <!-- component:norm-std -->
 # Norm Standard Library Skill
@@ -122,6 +125,10 @@ The Norm source files and `@Document` annotations are authoritative. This file i
 <!-- end-component:norm-std -->
 
 
+## Component: package-standards
+
+Source: `https://github.com/normlanguage/package-standards.git`; revision: `b8009530ecc3b5622c4c082d53cf5d06bd516f9b`.
+
 <!-- component:package-standards -->
 # Package Standards Skill
 
@@ -172,6 +179,10 @@ Before publishing, verify the public API, module declaration, tests, samples, RE
 When an API is missing, inspect the library source and generated documentation first. Add a dependency only through `module.norm`, then implement and verify a public tool or sample against the published contract. Never invent an import or function name from another language.
 <!-- end-component:package-standards -->
 
+
+## Component: registry
+
+Source: `https://github.com/normlanguage/registry.git`; revision: `ab7dced7a37109af9bd1221d83b3f5720103a11c`.
 
 <!-- component:registry -->
 # Registry Skill

@@ -3,7 +3,7 @@
   "components": [
     {
       "name": "language-cli",
-      "revision": "working-tree",
+      "revision": "self",
       "sha256": "74460b535527696e525018e3dff2ad0640dc3385d1192a848e5a5543f2e34bd8"
     },
     {
