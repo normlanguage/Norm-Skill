@@ -1,0 +1,6 @@
+[submodule "components/package-standards"]
+	path = components/package-standards
+	url = https://github.com/normlanguage/package-standards.git
+[submodule "components/registry"]
+	path = components/registry
+	url = https://github.com/normlanguage/registry.git
