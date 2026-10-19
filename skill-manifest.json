@@ -5,13 +5,13 @@
     {
       "name": "language-cli",
       "source": "local",
-      "path": "SKILL.md",
+      "path": "components/language-cli/SKILL.md",
       "required": true
     },
     {
       "name": "norm-std",
       "repository": "https://github.com/normlanguage/Norm-Std-Skill.git",
-      "revision": "TODO_CREATE_REPOSITORY",
+      "revision": "09b1642b612936ce867a4ed0fde82a48d076c7e4",
       "path": "SKILL.md",
       "required": true
     },

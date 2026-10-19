@@ -1,5 +1,15 @@
 ---
 name: norm-skill
+description: Norm language, CLI, standard-library, package, and registry guidance for Norm projects.
+---
+
+# Norm
+
+This file is generated from the pinned components in `skill-manifest.json`.
+
+<!-- component:language-cli -->
+---
+name: norm-skill
 description: Write, modify, refactor, and test Norm language applications using the Norm CLI, authoritative language rules, and existing library catalogs. Use for .norm source and Norm modules.
 ---
 
@@ -54,3 +64,159 @@ Check [Status](https://normlanguage.github.io/Norm/status) and [version contract
 - For packaging or Java-backed modules, read [application builds](https://normlanguage.github.io/Norm/tooling/application-build) or [Java adapters](https://normlanguage.github.io/Norm/design/java-library-adapters) as the task requires.
 
 Keep API lists, language rules and command definitions in these owning sources. Extend application code using verified declarations rather than inventing APIs from names.
+<!-- end-component:language-cli -->
+
+
+<!-- component:norm-std -->
+# Norm Standard Library Skill
+
+This skill describes the public `std` module shipped with Norm. It is generated from the Norm standard-library sources and their `@Document` annotations.
+
+- Norm source revision: `a704d53d1b55afa59a5fa69a9f19183a8312381b`
+- Standard library module: `std` version `1`
+- Source: https://github.com/normlanguage/Norm/tree/a704d53d1b55afa59a5fa69a9f19183a8312381b/norm/stdlib/std
+- API export command: `norm docs norm/stdlib/std --output build/std-api --skill SKILL.md --strict`
+
+## Usage
+
+Use the exact imports and signatures from the API documentation generated with this skill. Do not invent declarations. The `std` module is exported by package and source file, including `std.io`, `std.filesystem`, `std.process`, `std.application`, `std.cli`, `std.http`, `std.json`, `std.collections`, `std.text`, `std.time`, `std.validation`, `std.serialization`, `std.websocket`, and `std.yaml`.
+
+## Capability index
+
+### Application and CLI
+
+- `std.application.arguments()` returns the application argument sequence.
+- `std.application.environmentVariable(name:)` reads one environment variable.
+- `std.application.applicationDirectory()` and `workingDirectory()` return application paths.
+- `std.cli.CommandLine` declares options, parses arguments, and produces help text.
+
+### Console and streams
+
+- `std.io.print(text:)` writes standard output.
+- `std.io.printError(text:)` writes standard error.
+- `std.io.standardInput()` returns a `ByteReader`.
+- `ByteReader.read(maximumBytes:)` returns `ReadChunk.Data` or `ReadChunk.Eof`.
+- Input is a byte stream. A line-oriented caller must buffer chunks, decode UTF-8, and handle both LF and CRLF. `readAll` waits for EOF and is not an interactive line reader.
+
+### Filesystem
+
+- `std.filesystem.Path` represents a filesystem path.
+- `std.filesystem.readText(path:, encoding:, maximumBytes:)` reads bounded text.
+- `std.filesystem.writeTextAtomic(path:, text:, encoding:)` writes text atomically.
+- `std.filesystem.openRead(path:)` and `openWrite(path:, mode:)` expose stream ownership.
+- Directory enumeration is not part of the current `std.filesystem` surface. Do not call `std.filesystem.listDirectory` unless it is present in the installed API export.
+
+### Processes
+
+- `std.process.runProcess(executable:, arguments:, directory:, environment:, input:, timeout:, maximumOutputBytes:)` runs one executable with structured argument boundaries.
+- The result exposes stdout, stderr, outcome, exit code, and truncation information.
+- `std.process.run` is not a standard-library declaration.
+
+### Data and protocols
+
+Use the `std.json`, `std.yaml`, `std.xml`, `std.http`, and `std.websocket` packages only through their generated declarations and documented resource lifecycle. Prefer typed values and bounded operations.
+
+## Source of truth
+
+The Norm source files and `@Document` annotations are authoritative. This file is a generated distribution artifact. Regenerate it when the pinned Norm revision changes; do not hand-edit API signatures.
+<!-- end-component:norm-std -->
+
+
+<!-- component:package-standards -->
+# Package Standards Skill
+
+Use this skill when creating, reviewing, publishing, or consuming a Norm library repository.
+
+## Source of truth
+
+- `module.norm` is the only source for module name, version, dependencies, exports, and binding fingerprints.
+- Public API facts come from Norm declarations and their `@Document` metadata. Do not duplicate API signatures in README or registry data.
+- The standard is defined by [`docs/standard.zh-CN.md`](docs/standard.zh-CN.md). This file is an agent-oriented index of that standard.
+
+## Repository contract
+
+A publishable library repository owns one public Module. The repository name and Module name use the same lowercase dot-separated identity. `exports` contains only maintained public API. Internal bindings remain behind module visibility.
+
+Required entry points:
+
+- `README.md` and `README.zh-CN.md` for discovery and a verified quick start.
+- `LICENSE` for the repository license.
+- The module's single `module.norm` declaration.
+- A runnable `samples/` consumer using the released package.
+- Tests and build entry points that work from a clean checkout.
+
+Do not publish aliases, implementation-only modules, duplicate type definitions, generated caches, credentials, or samples inside the runtime artifact.
+
+## Skill publication
+
+Every publishable library exposes a root `SKILL.md` at the repository root. It is generated from declarations, `@Document`, and verified samples through the repository's canonical generator. The generated file must be checked in and reproducible; CI must fail when regeneration changes it.
+
+A library Skill should state:
+
+- module name, supported Norm version, and immutable release URL;
+- public packages, types, functions, fields, errors, and resource lifecycles;
+- the smallest verified examples and their required dependencies;
+- unsupported or unavailable capabilities when agents might otherwise guess them;
+- links back to source/API documentation.
+
+The Skill describes the library; it does not replace API declarations, `module.norm`, README, or Registry ownership data.
+
+## Release and consumption
+
+Release versions are positive integers. Version `N` is tag `vN`; tags and artifacts are immutable. A release must contain the package artifact, SHA-256 sidecar, license contract, and a consumer check from an empty cache. Dependencies resolve through the package manager and must not rely on sibling checkouts, absolute paths, or hidden caches.
+
+Before publishing, verify the public API, module declaration, tests, samples, README commands, generated Skill, artifact checksum, license, and clean-cache consumer installation. Use the shared workflows from [`normlanguage/registry`](https://github.com/normlanguage/registry) instead of copying packaging logic.
+
+## Agent workflow
+
+When an API is missing, inspect the library source and generated documentation first. Add a dependency only through `module.norm`, then implement and verify a public tool or sample against the published contract. Never invent an import or function name from another language.
+<!-- end-component:package-standards -->
+
+
+<!-- component:registry -->
+# Registry Skill
+
+Use this skill when registering Norm modules, validating ownership, or consuming immutable package releases.
+
+## Registry contract
+
+`registry.json` is the single source for Module-to-GitHub ownership. Its schema is [`registry.schema.json`](registry.schema.json). Each entry has exactly `name`, `owner`, and `repository`.
+
+The Registry does not copy module versions, dependencies, API signatures, Skill text, or release metadata. Those facts remain in the package repository and its `module.norm` declaration.
+
+## Lookup and Skill URL
+
+For a registered entry `{name, owner, repository}`, the canonical repository is:
+
+```text
+https://github.com/{owner}/{repository}
+```
+
+A released library Skill is discovered at the immutable tag URL:
+
+```text
+https://raw.githubusercontent.com/{owner}/{repository}/v{version}/SKILL.md
+```
+
+The `main` URL may be used for development inspection. Agents should use a version tag for reproducible work and must not infer a Skill URL for an unregistered module.
+
+## Registering a module
+
+1. Confirm the repository is public, maintained, and follows the Package Standards Skill.
+2. Confirm its `module.norm` name matches the proposed registry name and its repository identity follows the package naming rules.
+3. Add one ownership entry to `registry.json`.
+4. Run the schema and duplicate/name validation used by the repository CI.
+5. Open a pull request containing only the ownership change and supporting evidence.
+
+Existing owners publish new versions in their package repositories. A registry change does not publish or overwrite an artifact.
+
+## Releases and installation
+
+Package repositories publish immutable `v<version>` tags and `<artifact>-<version>.nar` plus its SHA-256 sidecar. Use the shared workflows and actions in `.github/` for package, checksum, license, and consumer verification. Pass one explicit `norm-version` or immutable `norm-source-ref`; do not silently select a moving compiler revision.
+
+A package consumer resolves the registry entry, downloads the immutable artifact, verifies the sidecar and module identity, and installs through the Norm package manager. A missing registry entry, mismatched module identity, changed tag, checksum failure, or missing license is a release error.
+
+## Agent workflow
+
+Use the Registry to discover ownership and the package repository to read API and Skill content. Never treat Registry data as an API catalog. When adding a dependency, record it in the consumer's `module.norm` and use the package manager; do not create a local dependency directory or copy generated Skill content into the consumer.
+<!-- end-component:registry -->
