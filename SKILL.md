@@ -68,7 +68,7 @@ Keep API lists, language rules and command definitions in these owning sources. 
 
 ## Component: norm-std
 
-Source: `https://github.com/normlanguage/Norm-Std-Skill.git`; revision: `53124bf6c680c49ad007274e2b193fc0233f29c9`.
+Source: `https://github.com/normlanguage/Norm-Std-Skill.git`; revision: `6bbb6ce5c2f62da3e93fc199a33c685d8d2015fb`.
 
 <!-- component:norm-std -->
 # Norm Standard Library Skill
@@ -77,7 +77,7 @@ This skill describes the public `std` module shipped with Norm. It is generated 
 
 - Norm source revision: `291eb53b8b6afa3668522d5f6774f3f34f960cc7`
 - Standard library module: `std` version `1`
-- Source: https://github.com/normlanguage/Norm/tree/codex/skill-distribution/norm/stdlib/std
+- Source: https://github.com/normlanguage/Norm/tree/291eb53b8b6afa3668522d5f6774f3f34f960cc7/norm/stdlib/std
 - API export command: `norm docs norm/stdlib/std --output build/std-api --skill SKILL.md --strict`
 
 ## Usage
@@ -127,7 +127,7 @@ The Norm source files and `@Document` annotations are authoritative. This file i
 
 ## Component: package-standards
 
-Source: `https://github.com/normlanguage/package-standards.git`; revision: `b8009530ecc3b5622c4c082d53cf5d06bd516f9b`.
+Source: `https://github.com/normlanguage/package-standards.git`; revision: `f98ff3ce4abfda96d5b34be6800bd72b76e969bb`.
 
 <!-- component:package-standards -->
 # Package Standards Skill
@@ -182,7 +182,7 @@ When an API is missing, inspect the library source and generated documentation f
 
 ## Component: registry
 
-Source: `https://github.com/normlanguage/registry.git`; revision: `ab7dced7a37109af9bd1221d83b3f5720103a11c`.
+Source: `https://github.com/normlanguage/registry.git`; revision: `e60fa518da247d940516ad113750613d6d6faf75`.
 
 <!-- component:registry -->
 # Registry Skill
