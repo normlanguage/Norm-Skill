@@ -11,21 +11,21 @@
     {
       "name": "norm-std",
       "repository": "https://github.com/normlanguage/Norm-Std-Skill.git",
-      "revision": "53124bf6c680c49ad007274e2b193fc0233f29c9",
+      "revision": "6bbb6ce5c2f62da3e93fc199a33c685d8d2015fb",
       "path": "SKILL.md",
       "required": true
     },
     {
       "name": "package-standards",
       "repository": "https://github.com/normlanguage/package-standards.git",
-      "revision": "b8009530ecc3b5622c4c082d53cf5d06bd516f9b",
+      "revision": "f98ff3ce4abfda96d5b34be6800bd72b76e969bb",
       "path": "SKILL.md",
       "required": true
     },
     {
       "name": "registry",
       "repository": "https://github.com/normlanguage/registry.git",
-      "revision": "ab7dced7a37109af9bd1221d83b3f5720103a11c",
+      "revision": "e60fa518da247d940516ad113750613d6d6faf75",
       "path": "SKILL.md",
       "required": true
     }

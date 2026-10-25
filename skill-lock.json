@@ -8,17 +8,17 @@
     },
     {
       "name": "norm-std",
-      "revision": "53124bf6c680c49ad007274e2b193fc0233f29c9",
-      "sha256": "50a4eb3d8aef2bd933b656f4ee4bc9c407316810d386a7634be67c70f77b7ece"
+      "revision": "6bbb6ce5c2f62da3e93fc199a33c685d8d2015fb",
+      "sha256": "b0df2cce60a0b6c4563b1854ab5145761962c3e76b71afd10bb682790ca12440"
     },
     {
       "name": "package-standards",
-      "revision": "b8009530ecc3b5622c4c082d53cf5d06bd516f9b",
+      "revision": "f98ff3ce4abfda96d5b34be6800bd72b76e969bb",
       "sha256": "e60eb6b6554c8d13c59656a225a19b4a179111fa7a3c570b3a557cd5f8244f55"
     },
     {
       "name": "registry",
-      "revision": "ab7dced7a37109af9bd1221d83b3f5720103a11c",
+      "revision": "e60fa518da247d940516ad113750613d6d6faf75",
       "sha256": "567895e45b12bc812bb0a3e2491a4b42bfaa81aeebe88e77f92ed8e83b0ed308"
     }
   ]
